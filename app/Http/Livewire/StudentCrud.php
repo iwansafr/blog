@@ -42,7 +42,7 @@ class StudentCrud extends Component
 
   public function handleStored($student)
   {
-		if($student['status'])  	
+		if(!empty($student['status']))
 		{
   		session()->flash('message','Student '. $student['firstname'].' Was Updated !');
 		}else{
