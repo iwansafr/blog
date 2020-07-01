@@ -23,21 +23,37 @@
 	<div wire:loading>
 		Processing ...
 	</div>
+	<div class="row">
+		<div class="col">
+			<select name="" id="" wire:model="paginate" class="form-control form-control-sm w-auto">
+				<option value="5">5</option>
+				<option value="10">10</option>
+				<option value="15">15</option>
+				<option value="20">20</option>
+				<option value="25">25</option>
+				<option value="30">30</option>
+			</select>
+		</div>
+		<div class="col">
+			<input wire:model="search" type="text" class="form-control form-control-sm w-auto pull-right" placeholder="search">
+		</div>
+	</div>
+	<hr>
 	<table class="table" wire:loading.remove>
 		<thead class="thead-dark">
 			<tr>
 				<th scope="col">#</th>
-				<th scope="col">firstname</th>
-				<th scope="col">lastname</th>
-				<th scope="col">gender</th>
-				<th scope="col">phone</th>
+				<th scope="col"><a href="#" wire:click="sort_data('firstname')"><i class="fa fa-sort"></i> firstname</a></th>
+				<th scope="col"><a href="#" wire:click="sort_data('lastname')"><i class="fa fa-sort"></i> lastname</a></th>
+				<th scope="col"><a href="#" wire:click="sort_data('gender')"><i class="fa fa-sort"></i> gender</a></th>
+				<th scope="col"><a href="#" wire:click="sort_data('phone')"><i class="fa fa-sort"></i> phone</a></th>
 				<th scope="col"></th>
 			</tr>
 		</thead>
 		<tbody>
 			@foreach ($data as $value)
 				<tr>
-					<th scope="row">{{$loop->index+1}}</th>
+					<th scope="row">{{$start_num++}}</th>
 					<td>{{ $value->firstname }}</td>
 					<td>{{$value->lastname}}</td>
 					<td>{{$value->gender}}</td>
@@ -47,6 +63,7 @@
 						<button wire:click="delete({{ $value->id }})" class="btn btn-sm btn-danger text-white">Delete</button>
 					</td>
 				</tr>
+
 			@endforeach
 		</tbody>
 	</table>
