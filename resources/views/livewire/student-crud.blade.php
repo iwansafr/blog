@@ -39,15 +39,16 @@
 		</div>
 	</div>
 	<hr>
+	<a href="{{ url('student/export') }}" class="btn btn-sm btn-success mb-1"><i class="fa fa-file-excel-o"></i> Export</a>
 	<table class="table" wire:loading.remove>
 		<thead class="thead-dark">
 			<tr>
-				<th scope="col">#</th>
+				<th scope="col"><a href="#" wire:click="sort_data('id')"><i class="fa fa-refresh"></i></a></th>
 				<th scope="col"><a href="#" wire:click="sort_data('firstname')"><i class="fa fa-sort"></i> firstname</a></th>
 				<th scope="col"><a href="#" wire:click="sort_data('lastname')"><i class="fa fa-sort"></i> lastname</a></th>
 				<th scope="col"><a href="#" wire:click="sort_data('gender')"><i class="fa fa-sort"></i> gender</a></th>
 				<th scope="col"><a href="#" wire:click="sort_data('phone')"><i class="fa fa-sort"></i> phone</a></th>
-				<th scope="col"></th>
+				<th scope="col">Action</th>
 			</tr>
 		</thead>
 		<tbody>
