@@ -44,5 +44,4 @@ Route::get('home',function(){
 
 Route::get('student/export/','Student@export');
 
-
 Route::view('studentscrud','livewire.students.home');
