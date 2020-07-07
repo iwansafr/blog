@@ -40,33 +40,37 @@
 	</div>
 	<hr>
 	<a href="{{ url('student/export') }}" class="btn btn-sm btn-success mb-1"><i class="fa fa-file-excel-o"></i> Export</a>
-	<table class="table" wire:loading.remove>
-		<thead class="thead-dark">
-			<tr>
-				<th scope="col"><a href="#" wire:click="sort_data('id')"><i class="fa fa-refresh"></i></a></th>
-				<th scope="col"><a href="#" wire:click="sort_data('firstname')"><i class="fa fa-sort"></i> firstname</a></th>
-				<th scope="col"><a href="#" wire:click="sort_data('lastname')"><i class="fa fa-sort"></i> lastname</a></th>
-				<th scope="col"><a href="#" wire:click="sort_data('gender')"><i class="fa fa-sort"></i> gender</a></th>
-				<th scope="col"><a href="#" wire:click="sort_data('phone')"><i class="fa fa-sort"></i> phone</a></th>
-				<th scope="col">Action</th>
-			</tr>
-		</thead>
-		<tbody>
-			@foreach ($data as $value)
+	<div class="table-responsive">
+		<table class="table" wire:loading.remove>
+			<thead class="thead-dark">
 				<tr>
-					<th scope="row">{{$start_num++}}</th>
-					<td>{{ $value->firstname }}</td>
-					<td>{{$value->lastname}}</td>
-					<td>{{$value->gender}}</td>
-					<td>{{$value->phone}}</td>
-					<td>
-						<button wire:click="getStudent({{ $value->id }})" class="btn btn-sm btn-info text-white">Edit</button>
-						<button wire:click="delete({{ $value->id }})" class="btn btn-sm btn-danger text-white">Delete</button>
-					</td>
+					<th scope="col"><a href="#" wire:click="sort_data('id')"><i class="fa fa-refresh"></i></a></th>
+					<th scope="col"><a href="#" wire:click="sort_data('firstname')"><i class="fa fa-sort"></i> firstname</a></th>
+					<th scope="col"><a href="#" wire:click="sort_data('lastname')"><i class="fa fa-sort"></i> lastname</a></th>
+					<th scope="col"> photo</th>
+					<th scope="col"><a href="#" wire:click="sort_data('gender')"><i class="fa fa-sort"></i> gender</a></th>
+					<th scope="col"><a href="#" wire:click="sort_data('phone')"><i class="fa fa-sort"></i> phone</a></th>
+					<th scope="col">Action</th>
 				</tr>
+			</thead>
+			<tbody>
+				@foreach ($data as $value)
+					<tr>
+						<th scope="row">{{$start_num++}}</th>
+						<td>{{ $value->firstname }}</td>
+						<td>{{$value->lastname}}</td>
+						<td><img src="{{asset('storage/student/'.$value->photo)}}" alt="" height="100"></td>
+						<td>{{$value->gender}}</td>
+						<td>{{$value->phone}}</td>
+						<td>
+							<button wire:click="getStudent({{ $value->id }})" class="btn btn-sm btn-info text-white">Edit</button>
+							<button wire:click="delete({{ $value->id }})" class="btn btn-sm btn-danger text-white">Delete</button>
+						</td>
+					</tr>
 
-			@endforeach
-		</tbody>
-	</table>
-	{{ $data->links() }}
+				@endforeach
+			</tbody>
+		</table>
+		{{ $data->links() }}
+	</div>
 </div>

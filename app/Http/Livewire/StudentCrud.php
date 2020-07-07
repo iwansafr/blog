@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Student;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Illuminate\Support\Facades\Storage;
 
 class StudentCrud extends Component
 {
@@ -79,8 +80,11 @@ class StudentCrud extends Component
   	if($id)
   	{
   		$student = Student::find($id);
+      if(!empty($student->photo))
+      {
+        Storage::delete('public/student/'.$student->photo);
+      }
   		$student->delete();
-
   		session()->flash('message','Student was Deleted');
   	}
   }
