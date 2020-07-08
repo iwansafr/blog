@@ -9,15 +9,15 @@ use Illuminate\Support\Facades\Storage;
 
 class StudentCrud extends Component
 {
-	use WithPagination;
+use WithPagination;
 
-	public $statusUpdate = false;
+public $statusUpdate = false;
   public $paginate = 5;
   public $search;
   public $order = ['field'=>'id','type'=>'DESC'];
 
   // public $sort_firstname = false;
-  // public $sort_lastname = false;
+  // public $sort_lastname = false;s
   // public $sort_gender = false;
   // public $sort_phone = false;
 
@@ -40,8 +40,8 @@ class StudentCrud extends Component
 	  // 	'data' => Student::latest()->paginate($this->paginate)
 	  // ]);
 
-    $data = $this->search === null ? 
-    Student::orderBy($this->order['field'],$this->order['type']) : 
+    $data = $this->search === null ?
+    Student::orderBy($this->order['field'],$this->order['type']) :
     Student::where('firstname','like', '%'. $this->search.'%')
         ->orWhere('lastname','like', '%'. $this->search.'%')
         ->orderBy($this->order['field'],$this->order['type']);

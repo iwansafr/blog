@@ -18,9 +18,9 @@ use Illuminate\Support\Facades\Route;
 // Route::livewire('/create','post.create')->name('post.create');
 // Route::livewire('/edit/{id}','post.edit')->name('post.edit');
 
-Route::get('/',function(){
-	return view('welcome');
-});
+// Route::get('/',function(){
+// 	return view('welcome');
+// });
 
 
 // belajar yukcoding
@@ -47,3 +47,7 @@ Route::get('home',function(){
 Route::get('student/export/','Student@export');
 
 Route::view('studentscrud','livewire.students.home');
+
+Route::livewire('/','home')->name('home');
+Route::livewire('/login','login')->name('login');
+Route::livewire('/register','register');

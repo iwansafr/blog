@@ -49,6 +49,7 @@
                     </li>
                     <li>
                         <a href=""><i class="menu-icon fa fa-list"></i> Jenjang</a>
+                        <a href="/login"><i class="menu-icon fa fa-list"></i> Login</a>
                         <a href=""><i class="menu-icon fa fa-list"></i> Program</a>
                     </li>
                 </ul>
